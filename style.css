@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    height: 100vh;
+    
+}
+.container{
+    font-size: 35px;
+   text-align: center;
+    
+}
+.stopwatch{
+    margin-bottom: 20px;
+}
+button{
+    color: green;
+    background-color: #f5f3f3;
+    border-radius: 50%;
+    outline: none;
+    border: 1px solid black;
+    margin: 10px 20px;
+    padding: 3px;
+
+    width: 76px;
+
+    height: 42px;
+    font-size: 20px;
+    font-weight: bold;
+  
+}
+#reset{
+    color: #ff9f0e;
+}
+#stop{
+    color: rgb(255 45 45);
+    
+}
