@@ -1,57 +1,38 @@
-var stopwatch=document.querySelector(".stopwatch")
-var hr=0,sec=0,min=0;
-var action = true;
-var start=document.querySelector("#start")
-var stopp =document.querySelector("#stop")
-var Reset=document.querySelector("#reset")
+let h=0,min=0,sec=0,msec=0;
+let stopWatch=document.getElementById('stopwatch')
+let time
+const Reset=()=>{
+   Stop()
+    h=0,min=0,sec=0,msec=0
+    stopWatch.innerHTML='00:00:00:00'
 
-function startTime(){
-    if(action == true){
-        action= false
-        time()
-    }}
-function time(){
-    if(action == false){
-    sec = parseInt(sec);
-     min = parseInt(min);
-      hr = parseInt(hr);
-   
-    
-    
-     sec=sec+1
-     if (sec == 60) 
-    { min = min + 1; sec = 0; } 
-    if (min == 60) 
-    { hr = hr + 1; min = 0; sec = 0; } 
-    if (sec < 10 || sec == 0) 
-    { sec = '0' + sec; } 
-    if (min < 10 || min == 0) 
-    { min = '0' + min; } 
-    if (hr < 10 || hr == 0)
-     { hr = '0' + hr; } 
-      stopwatch.innerHTML = hr + ':' + min + ':' + sec; 
-     setTimeout("time()",10)
-    
-     
-}}
-function restTime(){
-    hr=0,min=0,sec=0
-    stopwatch.innerHTML = '00:00:00';
-    action=true
-    
-    
 }
-function stopTime(){console.log(action)
-    // if(action == false){
-        action= true
-    console.log(action)}
-    // }
+
+const Stop=()=>{
+    clearInterval(time)
+}
+const Start=()=>{
+    Stop()
+
+   time= setInterval(function(){
+    msec=parseInt(msec)
+    sec=parseInt(sec)
+    min=parseInt(min)
+    h=parseInt(h)
+    msec++
+     msec==60?(sec++ ,msec=0) :null
+     sec==60?(min++ ,sec=0) :null   
+     min==60?(h++ ,min=0,sec=0) :null 
+    msec<10?(msec="0"+msec.toString()):msec
+    sec<10?(sec="0"+sec.toString()):sec
+    min<10?(min="0"+min.toString()):min
+    h<10?(h="0"+h.toString()):h
+    stopWatch.innerHTML=`${h}:${min}:${sec}:${msec}`
     
-    
-      
+},1)
+
+
+}
 
 
 
-start.addEventListener("click",startTime)
-Reset.addEventListener("click",restTime)
-stopp.addEventListener("click",stopTime)
